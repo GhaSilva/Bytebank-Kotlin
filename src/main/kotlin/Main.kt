@@ -1,3 +1,7 @@
 fun main() {
-    print("Bem vindo ao bytebank")
+    println("Bem vindo ao bytebank")
+    var titular = "Alex"
+
+    println("Titular: ${titular}")
+
 }
