@@ -16,6 +16,16 @@ fun main() {
     println(contaFran.titular)
     println(contaFran.numero)
     println(contaFran.saldo)
+
+
+    println("Depositando na Conta do Alex")
+    deposita(contaAlex, 50.0)
+    println(contaAlex.saldo)
+
+    println("Depositando na Conta da Fran")
+    deposita(contaFran, 500.0)
+    println(contaFran.saldo)
+
     }
     class Conta {
         var titular = "";
@@ -23,6 +33,9 @@ fun main() {
         var saldo = 0.0;
 
     }
+fun deposita(conta:Conta, valor:Double){
+    conta.saldo += valor
+}
 
 fun testaCondicoes(saldo: Double) {
 
