@@ -19,12 +19,17 @@ fun main() {
 
 
     println("Depositando na Conta do Alex")
-    deposita(contaAlex, 50.0)
+    contaAlex.deposita(50.0)
     println(contaAlex.saldo)
 
     println("Depositando na Conta da Fran")
-    deposita(contaFran, 500.0)
+    contaFran.deposita(500.0)
     println(contaFran.saldo)
+
+
+    println("Sacando na Conta do Alex")
+    contaAlex.saca(50.0)
+    println(contaAlex.saldo)
 
     }
     class Conta {
@@ -32,10 +37,19 @@ fun main() {
         var numero = 0;
         var saldo = 0.0;
 
+    fun deposita(valor:Double){
+            this.saldo += valor
+        }
+
+    fun saca(valor:Double){
+        if(this.saldo < 0){
+            println("Não há fundos o suficiente")
+        } else{
+            this.saldo -= valor
+        }
     }
-fun deposita(conta:Conta, valor:Double){
-    conta.saldo += valor
-}
+    }
+
 
 fun testaCondicoes(saldo: Double) {
 
