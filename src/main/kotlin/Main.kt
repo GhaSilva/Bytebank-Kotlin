@@ -18,37 +18,56 @@ fun main() {
     println(contaFran.saldo)
 
 
-    println("Depositando na Conta do Alex")
-    contaAlex.deposita(50.0)
-    println(contaAlex.saldo)
+//    println("Depositando na Conta do Alex")
+//    contaAlex.deposita(50.0)
+//    println(contaAlex.saldo)
+//
+//    println("Depositando na Conta da Fran")
+//    contaFran.deposita(500.0)
+//    println(contaFran.saldo)
+//
+//
+//    println("Sacando na Conta do Alex")
+//    contaAlex.saca(50.0)
+//    println(contaAlex.saldo)
 
-    println("Depositando na Conta da Fran")
-    contaFran.deposita(500.0)
+
+    contaFran.transfere(1.0, contaAlex)
+    println(contaAlex.saldo)
     println(contaFran.saldo)
 
 
-    println("Sacando na Conta do Alex")
-    contaAlex.saca(50.0)
-    println(contaAlex.saldo)
+}
 
+class Conta {
+    var titular = "";
+    var numero = 0;
+    var saldo = 0.0;
+
+    fun deposita(valor: Double) {
+        this.saldo += valor
     }
-    class Conta {
-        var titular = "";
-        var numero = 0;
-        var saldo = 0.0;
 
-    fun deposita(valor:Double){
-            this.saldo += valor
-        }
-
-    fun saca(valor:Double){
-        if(this.saldo < 0){
+    fun saca(valor: Double) {
+        if (this.saldo < 0) {
             println("Não há fundos o suficiente")
-        } else{
-            this.saldo -= valor
         }
+        this.saldo -= valor
+
     }
+
+    fun transfere(valor: Double, contaDestino: Conta): Boolean {
+        if (this.saldo < 0) {
+            println("Não há fundos o suficiente para realizar a transferência")
+            return false
+        }
+        this.saldo -= valor
+        contaDestino.saldo += valor
+        return true
+
     }
+
+}
 
 
 fun testaCondicoes(saldo: Double) {
@@ -59,7 +78,8 @@ fun testaCondicoes(saldo: Double) {
         else -> println("Conta é negativa")
     }
 }
-fun testaLaco(){
+
+fun testaLaco() {
     var i = 0
 
     while (i < 5) {
