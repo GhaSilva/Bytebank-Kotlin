@@ -1,48 +1,27 @@
 fun main() {
     println("Bem vindo ao bytebank")
-    val contaAlex = Conta()
-    contaAlex.titular = "Alex"
-    contaAlex.numero = 1000
-    contaAlex.setSaldo(200.0)
+    val contaAlex = Conta("Alex", 1000)
+    contaAlex.saldo = 200.0
+
     println(contaAlex.titular)
     println(contaAlex.numero)
-    println(contaAlex.getSaldo())
+    println(contaAlex.saldo)
 
 
-    val contaFran = Conta()
-    contaFran.titular = "Fran"
-    contaFran.numero = 1001
-    contaFran.setSaldo(300.0)
+    val contaFran = Conta(titular = "Fran", numero = 1001)
+
+    contaFran.saldo = 300.0
     println(contaFran.titular)
     println(contaFran.numero)
-    println(contaFran.getSaldo())
+    println(contaFran.saldo)
 
 
-//    println("Depositando na Conta do Alex")
-//    contaAlex.deposita(50.0)
-//    println(contaAlex.saldo)
-//
-//    println("Depositando na Conta da Fran")
-//    contaFran.deposita(500.0)
-//    println(contaFran.saldo)
-//
-//
-//    println("Sacando na Conta do Alex")
-//    contaAlex.saca(50.0)
-//    println(contaAlex.saldo)
-
-
-    contaFran.transfere(1.0, contaAlex)
-    println(contaAlex.getSaldo())
-    println(contaFran.getSaldo())
 
 
 }
 
-class Conta {
-    var titular = "";
-    var numero = 0;
-    private var saldo = 0.0;
+class Conta(var titular: String, val numero: Int) {
+    var saldo = 0.0;
 
     fun deposita(valor: Double) {
         this.saldo += valor
@@ -66,15 +45,6 @@ class Conta {
         return true
 
     }
-
-    fun getSaldo(): Double{
-        return saldo
-    }
-
-    fun setSaldo(valor: Double){
-        saldo = valor
-    }
-
 
 
 }
